@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Employee>
+@{
+    ViewData["Title"] = "GetAll";
+}
+
+
+@{
+    var departments = ViewData["Departments"];
+}
+
+
+@if (!string.IsNullOrEmpty(TempData["CreateEmployee"] as string))
+{
+    <div class="m-3 alert alert-info">
+        <p>
+            @TempData["CreateEmployee"]
+        </p>
+    </div>
+}
+
+
+
+<h1>All Employees</h1>
+<br />
+<br />
+<div>
+    <a asp-action="Create" asp-controller="Employee" class="btn btn-primary">Create Employee</a>
+</div>
+<br>
+<table class="table table-hover table-striped">
+<thead>
+    <th>Image</th>
+    <th>Name</th>
+    <th>Age</th>
+    <th>PhoneNumber</th>
+    <th>Email</th>
+    <th>IsDeleted</th>
+    <th>IsActive</th>
+    <th>Addres</th>
+    <th>HiringDate</th>
+    <th>Department</th>
+    <th>Task</th>
+    <th>ImageName</th>
+    <th>Details</th>
+    <th>Update</th>
+    <th>Delete</th>
+
+</thead>
+<tbody>
+    @foreach(var item in Model){
+        <tr>
+            <td>
+                <img src="~/Files/Images/@item.ImageName" height="100" />
+            </td>
+            <td>@item.Name</td>
+            <td>@item.Age</td>
+            <td>@item.PhoneNumber</td>
+            <td>@item.Email</td>
+            <td>@item.IsDeleted</td>
+            <td>@item.IsActive</td>
+            <td>@item.Addres</td>
+            <td>@item.HiringDate</td>
+            <td>@item.Department?.Name</td>
+            <td>@item.Tasks?.Details</td>
+            <td>@item.ImageName</td>
+                <partial name="EmployeePartialView/ButtonPartialView" model="@item.Id"></partial>
+        </tr>
+    }
+</tbody>
+</table>
