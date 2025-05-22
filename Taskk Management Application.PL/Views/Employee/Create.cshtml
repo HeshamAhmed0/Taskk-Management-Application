@@ -5,83 +5,14 @@
 
 
 
-@{
-    var departments = new SelectList(ViewData["departments"] as IEnumerable<Department>, "Id", "Name");
-    var tasks = new SelectList(ViewData["Tasks"] as IEnumerable<Tasks>, "Id", "Details");
-}
+
 
 
 <h1>Create Employee</h1>
 <br />
 <br />
 <form asp-action="Create" enctype="multipart/form-data">
-   <div class="my-3">
-        <label asp-for="Name" class="col-form-label"></label>
-        <input asp-for="Name" class="form-control" />
-        <span asp-validation-for="Name"></span>
-    </div>
-    <div class="my-3">
-        <label asp-for="Age" class="col-form-label"></label>
-        <input asp-for="Age" class="form-control" />
-        <span asp-validation-for="Age"></span>
-
-    </div>
-    <div class="my-3">
-        <label asp-for="Email" class="col-form-label"></label>
-        <input asp-for="Email" class="form-control" />
-        <span asp-validation-for="Email"></span>
-
-    </div>
-    <div class="my-3">
-        <label asp-for="Addres" class="col-form-label"></label>
-        <input asp-for="Addres" class="form-control" />
-        <span asp-validation-for="Addres"></span>
-
-    </div
-    <div class="my-3">
-        <label asp-for="PhoneNumber" class="col-form-label"></label>
-        <input asp-for="PhoneNumber" class="form-control" />
-        <span asp-validation-for="PhoneNumber"></span>
- 
-    </div>
-   
-    <div class="my-3">
-        <label asp-for="HiringDate" class="col-form-label"></label>
-        <input asp-for="HiringDate" class="form-control" />
-        <span asp-validation-for="HiringDate"></span>
-
-    </div>  
-    <div class="my-3">
-        <label asp-for="IsActive" class="form-check"></label>
-        <input asp-for="IsActive" class="col-form-label" />
-    </div> 
-    <div class="my-3">
-        <label asp-for="IsDeleted" class="form-check"></label>
-        <input asp-for="IsDeleted" class="col-form-label" />
-    </div> 
-
-
-    <div class="my-3">
-        <label asp-for="DepartmentId" class="form-check"></label>
-       <select asp-for="DepartmentId" asp-items="departments" class="form-control" >
-           <option >-- Select Department --</option>
-       </select>
-    </<div>
-
-
-        <div class="my-3">
-        <label asp-for="TaskId" class="form-check"></label>
-       <select asp-for="TaskId" asp-items="tasks" class="form-control" >
-           <option >-- Select Task --</option>
-       </select>
-    </<div>
-
-
-      <div>
-        <label asp-for="Image" class="form-check"></label>
-        <input asp-for="Image" type="file" class="col-form-label"/>
-      </div>
-
+    <partial name="EmployeePartialView\CreateUpdateEmployee"></partial>
      <div class="my-3">
         <input type="submit" value="Create" class="btn btn-primary" />
         <a asp-action="GetAll" asp-controller="Employee" class="btn btn-secondary">Back To List</a>
